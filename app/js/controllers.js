@@ -24,44 +24,11 @@ angular.module('cctApp.controllers', []).
                 sort.descending = false;
             }
         };
-
-        $scope.tableRowExpanded = false;
-        $scope.tableRowIndexExpandedCurr = "";
-        $scope.tableRowIndexExpandedPrev = "";
-        $scope.schoolIdExpanded = "";
-
-        $scope.schoolRowCollapseFn = function () {
-            $scope.schoolRowCollapse = [];
-            for (var i = 0; i < $scope.schools.school.contacts.length; i += 1) {
-                $scope.schoolRowCollapse.push(false);
-            }
-        };
-        $scope.selectTableRow = function (index, schoolId) {
-            if (typeof $scope.schoolRowCollapse === 'undefined') {
-                $scope.schoolRowCollapseFn();
-            }
-
-            if ($scope.tableRowExpanded === false && $scope.tableRowIndexExpandedCurr === "" && $scope.storeIdExpanded === "") {
-                $scope.tableRowIndexExpandedPrev = "";
-                $scope.tableRowExpanded = true;
-                $scope.tableRowIndexExpandedCurr = index;
-                $scope.storeIdExpanded = schoolId;
-                $scope.schoolRowCollapse[index] = true;
-            } else if ($scope.tableRowExpanded === true) {
-                if ($scope.tableRowIndexExpandedCurr === index && $scope.storeIdExpanded === schoolId) {
-                    $scope.tableRowExpanded = false;
-                    $scope.tableRowIndexExpandedCurr = "";
-                    $scope.storeIdExpanded = "";
-                    $scope.schoolRowCollapse[index] = false;
-                } else {
-                    $scope.tableRowIndexExpandedPrev = $scope.tableRowIndexExpandedCurr;
-                    $scope.tableRowIndexExpandedCurr = index;
-                    $scope.storeIdExpanded = schoolId;
-                    $scope.schoolRowCollapse[$scope.tableRowIndexExpandedPrev] = false;
-                    $scope.schoolRowCollapse[$scope.tableRowIndexExpandedCurr] = true;
-                }
-            }
-
+        $scope.activePosition = -1;
+        $scope.toggleDetail = function($index) {
+            console.log($index);
+            //$scope.isVisible = $scope.isVisible == 0 ? true : false;
+            $scope.activePosition = $scope.activePosition == $index ? -1 : $index;
         };
   })
   .controller('MyCtrl2', [function() {
