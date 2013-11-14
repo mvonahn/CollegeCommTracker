@@ -8,12 +8,42 @@
         <th ng-click="changeSorting('lastContact.Type')">Last Contact Description</th>
     </tr>
     </thead>
-    <tbody>
-    <tr ng-repeat="school in schools | orderBy:sort.column:sort.descending">
+    <tbody ng-repeat="school in schools | orderBy:sort.column:sort.descending">
+    <tr
+        ng-switch on ="school[$index]"
+        ng-click="selectTableRow($index,school.id)">
         <td>{{ school.name }}</td>
         <td>{{ school.count }}</td>
         <td>{{ school.lastContact.date }}</td>
         <td>{{ school.lastContact.description }}</td>
     </tr>
+
+    <tr ng-switch-when="true">
+        <td colspan="4">
+            <div class="span4">
+                <div class="pull-right">
+                    <table class="table table-hover table-condensed table-striped">
+                        <thead class="levelTwo">
+                        <tr>
+                            <th>Date [YYYY-MM-dd]</th>
+                            <th>Type</th>
+                            <th>Description</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr data-ng-repeat="contact in schools.contacts[$index]">
+                            <td>{{contact.date}}</td>
+                            <td>{{contact.type}}</td>
+                            <td>{{contact.description}}</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </td>
+    </tr>
+
+
+
     </tbody>
 </table>
