@@ -8,47 +8,13 @@
     </tr>
     </thead>
     <tbody>
-    <tr>
-        <td>Lehigh</td>
-        <td>2</td>
-        <td>2013-10-22</td>
-        <td>Schedule</td>
+
+    <tr ng-repeat="school in schools | orderBy:'name'">
+        <td>{{school.name}}</td>
+        <td>{{school.count}}</td>
+        <td>{{school.lastContactDate}}</td>
+        <td>{{school.lastContactType}}</td>
     </tr>
-    <tr>
-        <td>MIT</td>
-        <td>5</td>
-        <td>2013-09-15</td>
-        <td>Transcript</td>
-    </tr>
-    <tr>
-        <td>Colorado School of Mines</td>
-        <td>1</td>
-        <td>2013-10-22</td>
-        <td>Sparkler Play Schedule</td>
-    </tr>
-    <tr class="success">
-        <td>Lehigh</td>
-        <td>2</td>
-        <td>2013-10-22</td>
-        <td>Transcript</td>
-    </tr>
-    <tr class="danger">
-        <td>Lehigh</td>
-        <td>2</td>
-        <td>2013-10-22</td>
-        <td>Transcript</td>
-    </tr>
-    <tr class="warning">
-        <td>Lehigh</td>
-        <td>2</td>
-        <td>2013-10-22</td>
-        <td>Transcript</td>
-    </tr>
-    <tr>
-        <td>Lehigh</td>
-        <td>2</td>
-        <td>2013-10-22</td>
-        <td>Transcript</td>
-    </tr>
+
     </tbody>
 </table>
