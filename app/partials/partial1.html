@@ -1,20 +1,19 @@
+
 <table class="table table-striped table-bordered table-hover">
     <thead>
     <tr>
-        <th>University</th>
-        <th>Contact Count</th>
-        <th>Last Contact Date</th>
-        <th>Last Contact Type</th>
+        <th ng-click="changeSorting('name')">University</th>
+        <th ng-click="changeSorting('count')">Contact Count</th>
+        <th ng-click="changeSorting('lastContact.Date')">Last Contact Date</th>
+        <th ng-click="changeSorting('lastContact.Type')">Last Contact Description</th>
     </tr>
     </thead>
     <tbody>
-
-    <tr ng-repeat="school in schools | orderBy:'name'">
-        <td>{{school.name}}</td>
-        <td>{{school.count}}</td>
-        <td>{{school.lastContactDate}}</td>
-        <td>{{school.lastContactType}}</td>
+    <tr ng-repeat="school in schools | orderBy:sort.column:sort.descending">
+        <td>{{ school.name }}</td>
+        <td>{{ school.count }}</td>
+        <td>{{ school.lastContact.date }}</td>
+        <td>{{ school.lastContact.description }}</td>
     </tr>
-
     </tbody>
 </table>
