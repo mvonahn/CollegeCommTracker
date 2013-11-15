@@ -24,7 +24,12 @@ angular.module('cctApp.controllers', []).
                 sort.descending = false;
             }
         };
-
+        $scope.activePosition = -1;
+        $scope.toggleDetail = function($index) {
+            console.log($index);
+            //$scope.isVisible = $scope.isVisible == 0 ? true : false;
+            $scope.activePosition = $scope.activePosition == $index ? -1 : $index;
+        };
   })
   .controller('MyCtrl2', [function() {
 

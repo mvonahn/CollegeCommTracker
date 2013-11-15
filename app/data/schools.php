@@ -2,6 +2,7 @@
 $school = array();
 
 $school[] = array(
+    'id' => 1,
     'name'        => 'Lehigh University',
     'count'       => 3,
     'lastContact' => array(
@@ -28,13 +29,14 @@ $school[] = array(
 );
 
 $school[] = array(
-    'name' => 'MIT',
-    'count' => 5,
-    'lastContact'  => array(
-        'date' => '2013-09-15',
+    'id' => 2,
+    'name'        => 'MIT',
+    'count'       => 5,
+    'lastContact' => array(
+        'date'        => '2013-09-15',
         'description' => 'Transcript and Schedule'
     ),
-    'contacts' => array(
+    'contacts'    => array(
         array(
             'date'        => '2013-09-11',
             'type'        => 'email Sent',
@@ -54,10 +56,12 @@ $school[] = array(
             'date'        => '2013-10-22',
             'type'        => 'email sent',
             'description' => 'Transcript and Tournament Schedule'
-        ))
+        )
+    )
 );
 
 $school[] = array(
+    'id' => 3,
     'name' => 'Colorado School of Mines',
     'count' => 1,
     'lastContact'  => array(
