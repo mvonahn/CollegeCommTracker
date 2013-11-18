@@ -43,7 +43,7 @@ angular.module('cctApp.controllers', [])
         $scope.openComm = function () {
 
             var modalInstance = $modal.open({
-                templateUrl: 'partials/partial2.html',
+                templateUrl: 'partials/commDetail.html?test=fjdkls',
                 controller: 'CommModalController',
                 resolve: {
                     items: function () {
