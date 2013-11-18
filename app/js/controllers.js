@@ -2,12 +2,21 @@
 
 /* Controllers */
 
-angular.module('cctApp.controllers', []).
-  controller('MyCtrl1', function($scope, $http) {
+angular.module('cctApp.controllers', [])
+    .controller('CommModalController', function ($scope, $modalInstance) {
+
+        $scope.ok = function () {
+            $modalInstance.close();
+        };
+
+        $scope.cancel = function () {
+            $modalInstance.dismiss('cancel');
+        };
+    })
+    .controller('MyCtrl1', function($scope, $http, $modal, $log) {
         $http.get('data/schools.php').success(function(response) {
             $scope.schools = response;
         });
-
 
         $scope.sort = {
             column: 'name',
@@ -30,7 +39,24 @@ angular.module('cctApp.controllers', []).
             //$scope.isVisible = $scope.isVisible == 0 ? true : false;
             $scope.activePosition = $scope.activePosition == $index ? -1 : $index;
         };
-  })
-  .controller('MyCtrl2', [function() {
 
-  }]);
+        $scope.openComm = function () {
+
+            var modalInstance = $modal.open({
+                templateUrl: 'partials/partial2.html',
+                controller: 'CommModalController',
+                resolve: {
+                    items: function () {
+                        return 1;
+                    }
+                }
+            });
+
+            modalInstance.result.then(function (selectedItem) {
+                $scope.selected = selectedItem;
+            }, function () {
+                $log.info('Modal dismissed at: ' + new Date());
+            });
+        };
+
+  });

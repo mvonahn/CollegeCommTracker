@@ -4,7 +4,6 @@
     <thead>
     <tr>
         <th ng-click="changeSorting('name')">University</th>
-        <th ng-click="changeSorting('count')">Contact Count</th>
         <th ng-click="changeSorting('lastContact.Date')">Last Contact Date</th>
         <th ng-click="changeSorting('lastContact.Type')">Last Contact Description</th>
     </tr>
@@ -12,8 +11,7 @@
     <tbody ng-repeat="school in schools | orderBy:sort.column:sort.descending">
     <tr
         ng-click="toggleDetail($index)">
-        <td>{{ school.name }}</td>
-        <td>{{ school.count }}</td>
+        <td>{{ school.name }}<span class="pull-right badge">{{ school.count }}</span></td>
         <td>{{ school.lastContact.date }}</td>
         <td>{{ school.lastContact.description }}</td>
     </tr>
@@ -29,7 +27,7 @@
                 </tr>
                 </thead>
                 <tbody>
-                <tr data-ng-repeat="contact in school.contacts">
+                <tr data-ng-repeat="contact in school.contacts" ng-click="openComm()">
                     <td>{{contact.date}}</td>
                     <td>{{contact.type}}</td>
                     <td>{{contact.description}}</td>
