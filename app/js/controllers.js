@@ -36,17 +36,14 @@ angular.module('cctApp.controllers', [])
         $scope.activePosition = -1;
         $scope.selectedSchool = -1;
         $scope.toggleDetail = function($index, schoolid) {
-            console.log('Index: ' + $index);
-            console.log('school id: ' + schoolid);
-            //$scope.isVisible = $scope.isVisible == 0 ? true : false;
             $scope.activePosition = $scope.activePosition == $index ? -1 : $index;
             $scope.selectedSchool = $scope.selectedSchool == schoolid ? -1 : schoolid;
         };
 
-        $scope.openComm = function (contact, school) {
-            $scope.contact = contact;
-            $scope.school = school;
-            console.log('contact id: ' + $scope.contact.id);
+        $scope.openComm = function (contactLink) {
+            //$scope.contact = contact;
+            $scope.contact = angular.copy(contactLink);
+
             var modalInstance = $modal.open({
                 templateUrl: 'partials/commDetail.html?i=0',
                 controller: 'CommModalController',
@@ -58,8 +55,8 @@ angular.module('cctApp.controllers', [])
                 }
             });
 
-            modalInstance.result.then(function (selectedItem) {
-                $scope.selected = selectedItem;
+            modalInstance.result.then(function () {
+                contactLink.date = $scope.contact.date;
             }, function () {
                 $log.info('Modal dismissed at: ' + new Date());
             });
