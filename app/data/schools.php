@@ -11,16 +11,19 @@ $school[] = array(
     ),
     'contacts'    => array(
         array(
+            'id'          => 1,
             'date'        => '2013-10-21',
             'type'        => 'email received',
             'description' => 'Initial Interest through Ole'
         ),
         array(
+            'id'          => 2,
             'date'        => '2013-10-21',
             'type'        => 'email sent',
             'description' => 'Thanks for coming to watch'
         ),
         array(
+            'id'          => 3,
             'date'        => '2013-10-22',
             'type'        => 'email sent',
             'description' => 'Transcript and Tournament Schedule'
@@ -38,21 +41,25 @@ $school[] = array(
     ),
     'contacts'    => array(
         array(
+            'id'          => 4,
             'date'        => '2013-09-11',
             'type'        => 'email Sent',
             'description' => 'Initial email and schedule'
         ),
         array(
+            'id'          => 5,
             'date'        => '2013-09-12',
             'type'        => 'email received',
             'description' => 'Initial Interest through Ole'
         ),
         array(
+            'id'          => 6,
             'date'        => '2013-10-21',
             'type'        => 'email sent',
             'description' => 'Thanks for coming to watch'
         ),
         array(
+            'id'          => 7,
             'date'        => '2013-10-22',
             'type'        => 'email sent',
             'description' => 'Transcript and Tournament Schedule'
@@ -70,6 +77,7 @@ $school[] = array(
     ),
     'contacts' => array(
         array(
+            'id'          => 8,
             'date' => '2013-06-22',
             'type' => 'email',
             'description' => 'Intro and  Sparkler Game Schedule'

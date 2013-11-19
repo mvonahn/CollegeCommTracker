@@ -34,20 +34,26 @@ angular.module('cctApp.controllers', [])
             }
         };
         $scope.activePosition = -1;
-        $scope.toggleDetail = function($index) {
-            console.log($index);
+        $scope.selectedSchool = -1;
+        $scope.toggleDetail = function($index, schoolid) {
+            console.log('Index: ' + $index);
+            console.log('school id: ' + schoolid);
             //$scope.isVisible = $scope.isVisible == 0 ? true : false;
             $scope.activePosition = $scope.activePosition == $index ? -1 : $index;
+            $scope.selectedSchool = $scope.selectedSchool == schoolid ? -1 : schoolid;
         };
 
-        $scope.openComm = function () {
-
+        $scope.openComm = function (contact, school) {
+            $scope.contact = contact;
+            $scope.school = school;
+            console.log('contact id: ' + $scope.contact.id);
             var modalInstance = $modal.open({
-                templateUrl: 'partials/commDetail.html',
+                templateUrl: 'partials/commDetail.html?i=0',
                 controller: 'CommModalController',
+                scope: $scope,
                 resolve: {
-                    items: function () {
-                        return 1;
+                    contact: function () {
+                        return $scope.contact;
                     }
                 }
             });

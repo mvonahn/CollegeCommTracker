@@ -3,20 +3,20 @@
 <table class="table table-striped table-condensed table-bordered table-hover">
     <thead>
     <tr>
-        <th ng-click="changeSorting('name')">University</th>
-        <th ng-click="changeSorting('lastContact.Date')">Last Contact Date</th>
-        <th ng-click="changeSorting('lastContact.Type')">Last Contact Description</th>
+        <th ng-click="changeSorting('name')" >University</th>
+        <th ng-click="changeSorting('lastContact.Date')" class ="hidden-xs hidden-sm">Last Contact Date</th>
+        <th ng-click="changeSorting('lastContact.Type')" class ="hidden-xs">Last Contact Description</th>
     </tr>
     </thead>
     <tbody ng-repeat="school in schools | orderBy:sort.column:sort.descending">
     <tr
-        ng-click="toggleDetail($index)">
+        ng-click="toggleDetail($index, school.id)">
         <td>{{ school.name }}<span class="pull-right badge">{{ school.count }}</span></td>
-        <td>{{ school.lastContact.date }}</td>
-        <td>{{ school.lastContact.description }}</td>
+        <td class ="hidden-xs hidden-sm">{{ school.lastContact.date }}</td>
+        <td class ="hidden-xs">{{ school.lastContact.description }}</td>
     </tr>
 
-    <tr ng-show="activePosition == $index">
+    <tr ng-show="selectedSchool == school.id">
         <td colspan="4">
             <table class="table table-hover table-condensed table-striped">
                 <thead>
@@ -27,7 +27,7 @@
                 </tr>
                 </thead>
                 <tbody>
-                <tr data-ng-repeat="contact in school.contacts" ng-click="openComm()">
+                <tr data-ng-repeat="contact in school.contacts | orderBy:'-date'" ng-click="openComm(contact, school)">
                     <td>{{contact.date}}</td>
                     <td>{{contact.type}}</td>
                     <td>{{contact.description}}</td>
