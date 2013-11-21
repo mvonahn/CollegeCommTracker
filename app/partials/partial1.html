@@ -21,15 +21,18 @@
             <table class="table table-hover table-condensed table-striped">
                 <thead>
                 <tr>
-                    <th>Date [YYYY-MM-dd]</th>
-                    <th>Type</th>
+                    <th class ="hidden-xs">Date</th>
+                    <th class ="hidden-md hidden-lg"></th>
+                    <th class ="hidden-xs hidden-sm">Type</th>
                     <th>Description</th>
                 </tr>
                 </thead>
                 <tbody>
                 <tr data-ng-repeat="contact in school.contacts | orderBy:'-date'" ng-click="openComm(contact, school)">
-                    <td>{{contact.date}}</td>
-                    <td>{{contact.type}}</td>
+                    <td class ="hidden-xs">{{contact.date}}</td>
+
+                    <td class ="hidden-md hidden-lg"><span class="glyphicon glyphicon-circle-arrow-left text-warning"></span> </td>
+                    <td class ="hidden-xs hidden-sm">{{contact.type}}</td>
                     <td>{{contact.description}}</td>
                 </tr>
                 </tbody>

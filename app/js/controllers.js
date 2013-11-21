@@ -40,9 +40,9 @@ angular.module('cctApp.controllers', [])
             $scope.selectedSchool = $scope.selectedSchool == schoolid ? -1 : schoolid;
         };
 
-        $scope.openComm = function (contactLink) {
-            //$scope.contact = contact;
-            $scope.contact = angular.copy(contactLink);
+        $scope.openComm = function (contact) {
+            $scope.contact = contact;
+            $scope.tempContact = angular.copy(contact);
 
             var modalInstance = $modal.open({
                 templateUrl: 'partials/commDetail.html?i=0',
@@ -56,8 +56,11 @@ angular.module('cctApp.controllers', [])
             });
 
             modalInstance.result.then(function () {
-                contactLink.date = $scope.contact.date;
             }, function () {
+                contact.date = $scope.tempContact.date;
+                contact.type = $scope.tempContact.type;
+                contact.description = $scope.tempContact.description;
+                contact.content = $scope.tempContact.content;
                 $log.info('Modal dismissed at: ' + new Date());
             });
         };
