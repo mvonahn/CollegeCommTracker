@@ -9,7 +9,7 @@ require_once('/home1/webfootd/www/sarah/ci/application/libraries/REST_Controller
 /**
  * Class Welcome
  */
-class Welcome extends REST_Controller
+class User extends REST_Controller
 {
     /**
      * Index Page for this controller.
@@ -26,15 +26,15 @@ class Welcome extends REST_Controller
      * map to /index.php/welcome/<method_name>
      * @see http://codeigniter.com/user_guide/general/urls.html
      */
-    public function index()
+
+
+
+
+    public function index_get()
     {
-        $this->load->view('welcome_message');
+	$this->load->database();
+	$this->response($this->db->get('User')->result());
     }
-public function index_get()
-{
-$this->load->database();
-$this->response($this->db->get('User')->result());
 }
-}
-/* End of file welcome.php */
-/* Location: ./application/controllers/welcome.php */
+/* End of file user.php */
+/* Location: ./application/controllers/user.php */
