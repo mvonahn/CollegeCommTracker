@@ -4,7 +4,7 @@ if (! defined('BASEPATH')) {
     exit('No direct script access allowed');
 }
 
-require_once('REST_Controller.php');
+require_once('../libraries/REST_Controller.php');
 
 /**
  * Class Welcome
