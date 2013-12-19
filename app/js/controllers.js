@@ -14,7 +14,7 @@ angular.module('cctApp.controllers', [])
         };
     })
     .controller('MyCtrl1', function($scope, $http, $modal, $log) {
-        $http.get('data/schools.php').success(function(response) {
+        $http.get('/ws/user/contact').success(function(response) {
             $scope.schools = response;
         });
 
