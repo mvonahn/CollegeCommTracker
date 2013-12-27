@@ -36,8 +36,18 @@ AND
     order by CommunicationDate desc
 EOQ;
         $query = $this->db->query($sql);
+        $school = [];
         foreach ($query->result() as $row) {
-            $school[$row->Id] = $row;
+            $school[]= array(
+                'id' => $row->Id,
+                'name'        => $row->Name,
+                'count'       => $row->communicationCount,
+                'lastContact' => array(
+                    'date'        => $row->CommunicationDate,
+                    'description' => $row->Description
+                ),
+                'contacts' => []
+            );
         }
         return $school;
     }
