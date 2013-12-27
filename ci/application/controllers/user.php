@@ -106,9 +106,12 @@ class User extends REST_Controller
             )
         );
 
+        $this->load->model('User_Model', '', true);
+        $school = $this->User_Model->get_universities(1);
+
         $this->response($school);
     }
-    
+
 }
 /* End of file user.php */
 /* Location: ./application/controllers/user.php */
