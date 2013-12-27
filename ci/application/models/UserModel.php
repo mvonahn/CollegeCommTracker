@@ -4,7 +4,7 @@
 /**
  * Class User_Model
  */
-class User_Model extends CI_Model
+class User_model extends CI_Model
 {
 
     public function __construct()
