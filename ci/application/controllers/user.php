@@ -108,6 +108,7 @@ class User extends REST_Controller
 
         $this->response($school);
     }
+    
 }
 /* End of file user.php */
 /* Location: ./application/controllers/user.php */
