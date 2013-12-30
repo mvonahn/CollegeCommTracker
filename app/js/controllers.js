@@ -3,9 +3,17 @@
 /* Controllers */
 
 angular.module('cctApp.controllers', [])
-    .controller('CommModalController', function ($scope, $modalInstance) {
+    .controller('CommModalController', function ($scope, $modalInstance, $http) {
 
         $scope.ok = function () {
+            console.log($scope.contact);
+            var contact = $scope.contact;
+
+            $http.post('/ws/user/contact/' + contact.Id, {'TypeId': contact.type, "UniversityId": contact.UniversityId, 'Date': contact.date, 'Description': contact.description, "Content": contact.content}
+                    ).success(function(data, status, headers, config) {
+                        console.log(data);
+                    });
+
             $modalInstance.close();
         };
 
@@ -45,7 +53,7 @@ angular.module('cctApp.controllers', [])
             $scope.tempContact = angular.copy(contact);
 
             var modalInstance = $modal.open({
-                templateUrl: 'partials/commDetail.html?i=0',
+                templateUrl: 'partials/commDetail.html?i=2',
                 controller: 'CommModalController',
                 scope: $scope,
                 resolve: {
