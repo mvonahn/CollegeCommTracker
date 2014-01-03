@@ -22,10 +22,13 @@ angular.module('cctApp.controllers', [])
         };
     })
     .controller('MyCtrl1', function($scope, $http, $modal, $log) {
+
         $http.get('/ws/user/contact').success(function(response) {
             $scope.schools = response;
         });
-
+        $scope.addContent = function(){
+            alert('Add Content');
+        }
         $scope.sort = {
             column: 'name',
             descending: false
