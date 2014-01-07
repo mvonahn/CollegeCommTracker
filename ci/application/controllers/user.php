@@ -27,12 +27,19 @@ class User extends REST_Controller
         $this->response($school);
     }
 
-    public function contact_post($id)
+    public function contact_post($id = 0)
     {
         $data = json_decode(file_get_contents("php://input"));
-        $this->response($data);
+        $data->UserId = 1;
+        $this->load->model('Contact_model', '', true);
+        if($id == 0) {
+            $result = $this->Contact_model->addContact($data);
+        } else {
+            $data->Id = $id;
+            $result = $this->Contact_model->saveContact($data);
+        }
+        $this->response($result);
     }
-
 }
 /* End of file user.php */
 /* Location: ./application/controllers/user.php */
