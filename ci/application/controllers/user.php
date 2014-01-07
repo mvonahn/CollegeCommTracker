@@ -14,6 +14,7 @@ class User extends REST_Controller
 
     public function index_get()
     {
+        $this->load->database();
         $this->response($this->db->get('User')->result());
     }
 
@@ -29,10 +30,14 @@ class User extends REST_Controller
     public function contact_post($id = 0)
     {
         $data = json_decode(file_get_contents("php://input"));
-        $data->Id = $id;
+        $data->UserId = 1;
         $this->load->model('Contact_model', '', true);
-
-        $result = $this->Contact_model->saveContact($data);
+        if($id == 0) {
+            $result = $this->Contact_model->addContact($data);
+        } else {
+            $data->Id = $id;
+            $result = $this->Contact_model->saveContact($data);
+        }
         $this->response($result);
     }
 }

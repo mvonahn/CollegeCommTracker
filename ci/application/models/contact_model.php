@@ -21,15 +21,19 @@ class Contact_model extends CI_Model
      */
     public function saveContact($data)
     {
-        if ($data->Id == 0) {
-            unset($data->Id);
-            $this->db->insert('Communication', $data);
-            return $this->db->affected_rows();
-        }
         $this->db->where('id', $data->Id);
         unset($data->Id);
         $this->db->update('Communication', $data);
 
+        return $this->db->affected_rows();
+    }
+
+    /**
+     * @param $data
+     */
+    public function addContact($data)
+    {
+        $this->db->insert('Communication', $data);
         return $this->db->affected_rows();
     }
 }

@@ -28,8 +28,8 @@
                 </tr>
                 </thead>
                 <tbody>
-                <tr data-ng-repeat="contact in school.contacts | orderBy:'-date'" ng-click="openComm(contact)">
-                    <td class ="hidden-xs">{{contact.date}}</td>
+                <tr data-ng-repeat="contact in school.contacts | orderBy:'-date'" ng-click="openComm(contact, school)">
+                    <td class ="hidden-xs">{{contact.date | date:'yyyy/MM/dd'}}</td>
 
                     <td class ="hidden-md hidden-lg"><span class="glyphicon glyphicon-circle-arrow-left text-warning"></span> </td>
                     <td class ="hidden-xs hidden-sm">{{contact.type}}</td>

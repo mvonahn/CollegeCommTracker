@@ -10,8 +10,9 @@
             <input type="hidden" name="Id" value="{{contact.Id}}"><input type="hidden" name="UniversityId" value="{{contact.UniversityId}}" ng-if="contact.Id>0">
             <div class="form-group" ng-if="contact.Id==0">
                 <label for="inputType" class="col-lg-2 control-label">University</label>
-                <div class="col-lg-10">
-                    <input type="text" class="form-control" id="inputType" placeholder="Contact type" ng-model="contact.type" value = "{{contact.type}}">
+                <div class="col-lg-10"><input type="hidden" name="UniversityId" value="{{UniversitySelelector.Id}}">
+                    <input type="text" class="form-control" id="inputType" placeholder="University" ng-model="UniversitySelelector" required="true"
+                            typeahead="university as university.Name for university in universities | filter:{Name:$viewValue}">
                 </div>
             </div>
             <div class="form-group">
@@ -23,8 +24,10 @@
             <div class="form-group">
                 <label for="inputDate" class="col-lg-2 control-label">Date</label>
                 <div class="col-lg-10">
-                    <input type="text" class="form-control" id="inputDate" placeholder="Date" ng-model="contact.date" value = "{{contact.date}}">
-                </div>
+
+                <input type="text" class="form-control" datepicker-popup="{{format}}" ng-model="contact.date" is-open="opened" min="minDate" max="'2015-06-22'" datepicker-options="dateOptions"
+                ng-required="true" close-text="Close" />
+              </div>
             </div>
             <div class="form-group">
                 <label for="inputDescription" class="col-lg-2 control-label">Description</label>
