@@ -1,11 +1,19 @@
 <div class = "modal-dialog">
     <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" ng-click="cancel()">×</button>
-        <div class="modal-title">view/edit/add Communication</div>
+
+        <div class="modal-title"><span ng-if="contact.Id>0">Edit</span><span ng-if="contact.Id==0">New</span> Communication</div>
     </div>
 <div class="modal-body">
     <form class="form-horizontal">
-        <fieldset><input type="hidden" name="Id" value="{{contact.Id}}"><input type="hidden" name="UniversityId" value="{{contact.UniversityId}}">
+        <fieldset>
+            <input type="hidden" name="Id" value="{{contact.Id}}"><input type="hidden" name="UniversityId" value="{{contact.UniversityId}}" ng-if="contact.Id>0">
+            <div class="form-group" ng-if="contact.Id==0">
+                <label for="inputType" class="col-lg-2 control-label">University</label>
+                <div class="col-lg-10">
+                    <input type="text" class="form-control" id="inputType" placeholder="Contact type" ng-model="contact.type" value = "{{contact.type}}">
+                </div>
+            </div>
             <div class="form-group">
                 <label for="inputType" class="col-lg-2 control-label">Type</label>
                 <div class="col-lg-10">

@@ -14,7 +14,6 @@ class User extends REST_Controller
 
     public function index_get()
     {
-        $this->load->database();
         $this->response($this->db->get('User')->result());
     }
 
@@ -27,12 +26,15 @@ class User extends REST_Controller
         $this->response($school);
     }
 
-    public function contact_post($id)
+    public function contact_post($id = 0)
     {
         $data = json_decode(file_get_contents("php://input"));
-        $this->response($data);
-    }
+        $data->Id = $id;
+        $this->load->model('Contact_model', '', true);
 
+        $result = $this->Contact_model->saveContact($data);
+        $this->response($result);
+    }
 }
 /* End of file user.php */
 /* Location: ./application/controllers/user.php */
