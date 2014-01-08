@@ -1,4 +1,4 @@
-<div class = "modal-dialog">
+<div class="modal-dialog" xmlns="http://www.w3.org/1999/html">
     <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" ng-click="cancel()">×</button>
 
@@ -9,23 +9,25 @@
         <fieldset>
             <input type="hidden" name="Id" value="{{contact.Id}}"><input type="hidden" ng-model="contact.UniversityId" value="{{contact.UniversityId}}" ng-if="contact.Id>0">
             <div class="form-group" ng-if="contact.Id==0">
-                <label for="inputType" class="col-lg-2 control-label">University</label>
-                <div class="col-lg-10"><input type="text" ng-model="contact.UniversityId" value="{{UniversitySelelector.Id}}">
-                    <input type="text" class="form-control" id="inputType" placeholder="University" ng-model="UniversitySelelector" required="true"
+                <label for="inputUniversity" class="col-lg-2 control-label">University</label>
+                <div class="col-lg-10"><input type="hidden" ng-model="contact.UniversityId" ng-value="{{ contact.UniversityId = UniversitySelector.Id }}">
+                    <input type="text" class="form-control" id="inputUniversity" placeholder="University" ng-model="UniversitySelector" required="true"
                             typeahead="university as university.Name for university in universities | filter:{Name:$viewValue}">
                 </div>
             </div>
             <div class="form-group">
                 <label for="inputType" class="col-lg-2 control-label">Type</label>
                 <div class="col-lg-10">
-                    <input type="text" class="form-control" id="inputType" placeholder="Contact type" ng-model="contact.type" value = "{{contact.type}}">
+                    <input type="hidden" ng-model="contact.type" value = "{{contact.type = TypeSelector.id}}" />
+                    <input type="text" class="form-control" id="inputType" placeholder="Contact type" ng-model="TypeSelector" required="true"
+                           typeahead="type as type.Label for type in communicationTypes | filter:{Label:$viewValue}">
                 </div>
             </div>
             <div class="form-group">
                 <label for="inputDate" class="col-lg-2 control-label">Date</label>
                 <div class="col-lg-10">
 
-                <input type="text" class="form-control" datepicker-popup="{{format}}" ng-model="contact.date" is-open="opened" min="minDate" max="'2015-06-22'" datepicker-options="dateOptions"
+                <input type="text" id="inputDate" class="form-control" datepicker-popup="{{format}}" ng-model="contact.date" is-open="opened" min="minDate" max="'2015-06-22'" datepicker-options="dateOptions"
                 ng-required="true" close-text="Close" />
               </div>
             </div>

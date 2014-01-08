@@ -31,6 +31,11 @@ angular.module('cctApp.controllers', [])
             $scope.universities = response;
         });
 
+        $http.get('/ws/type').success(function(response) {
+            $scope.communicationTypes = response;
+
+        });
+
         $scope.addContact = function(){
             var newContact = new Array();
             newContact.date = new Date();
@@ -48,6 +53,16 @@ angular.module('cctApp.controllers', [])
             column: 'name',
             descending: false
         };
+
+    $scope.typeLabel = function(typeId) {
+        var types = $scope.communicationTypes;
+        for (var type in types) {
+            if(typeId == types[type].id) {
+                return  types[type].Label;
+            }
+        }
+        return 'No Label';
+    };
 
     $scope.convertToUTC = function(dt) {
         var localDate = new Date(dt);
@@ -79,10 +94,13 @@ angular.module('cctApp.controllers', [])
 
         $scope.openComm = function (contact) {
             $scope.contact = contact;
+            var TypeSelector = {'id':  contact.type,
+            Label:$scope.typeLabel(contact.type)};
+            $scope.TypeSelector = TypeSelector;
             $scope.tempContact = angular.copy(contact);
 
             var modalInstance = $modal.open({
-                templateUrl: 'partials/commDetail.html?i=11',
+                templateUrl: 'partials/commDetail.html?i=' + Math.random(),
                 controller: 'CommModalController',
                 scope: $scope,
                 resolve: {
