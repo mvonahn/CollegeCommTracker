@@ -30,6 +30,7 @@ class User extends REST_Controller
     public function contact_post($id = 0)
     {
         $data = json_decode(file_get_contents("php://input"));
+        $this->response($data);
         $data->UserId = 1;
         $this->load->model('Contact_model', '', true);
         if($id == 0) {

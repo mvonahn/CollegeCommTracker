@@ -7,6 +7,7 @@ angular.module('cctApp.controllers', [])
 
         $scope.ok = function () {
             var contact = $scope.contact;
+            console.log(contact.UniversityId);
             contact.date = $scope.convertToUTC(contact.date);
             $http.post('/ws/user/contact/' + contact.Id, {'TypeId': contact.type, "UniversityId": contact.UniversityId, 'CommunicationDate': contact.date, 'Description': contact.description, "Content": contact.content}
                     ).success(function(data, status, headers, config) {
@@ -81,7 +82,7 @@ angular.module('cctApp.controllers', [])
             $scope.tempContact = angular.copy(contact);
 
             var modalInstance = $modal.open({
-                templateUrl: 'partials/commDetail.html?i=7',
+                templateUrl: 'partials/commDetail.html?i=11',
                 controller: 'CommModalController',
                 scope: $scope,
                 resolve: {
